@@ -9,4 +9,8 @@ import Foundation
 
 final class NetworkManager {
     
+    //singelton
+    static let shared = NetworkManager()
+    
+    
 }
