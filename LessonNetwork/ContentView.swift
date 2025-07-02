@@ -47,7 +47,11 @@ struct ContentView: View {
                                         .scaledToFit()
                                         .frame(height: 50)
                                 }
-                                
+                                VStack(alignment: .leading) {
+                                    Text(article.title)
+                                    
+                                    Text(article.publishedAt.convertData())
+                                }
                             }
                             .frame(width: 260, height: 260)
                             .padding(10)
@@ -70,4 +74,11 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+}
+
+
+extension Date {
+    func convertData() -> String {
+        return formatted(.dateTime.hour().minute().day().month().year())
+    }
 }
