@@ -23,6 +23,18 @@ struct ContentView: View {
                     .font(.title)
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading)
+                    .padding(.top)
+                
+                
+                
+                
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        
+                    }
+                }
             }
         }
         
