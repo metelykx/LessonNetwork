@@ -49,9 +49,11 @@ struct ContentView: View {
                                 }
                                 VStack(alignment: .leading) {
                                     Text(article.title)
+                                    Spacer()
                                     
                                     Text(article.publishedAt.convertData())
                                 }
+                                .frame(maxWidth: .infinity, alignment: .leading)
                             }
                             .frame(width: 260, height: 260)
                             .padding(10)
