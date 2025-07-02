@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var news: [Article] = []
+    
     var body: some View {
         VStack {
             Image(systemName: "globe")
@@ -16,6 +19,17 @@ struct ContentView: View {
             Text("Hello, world!")
         }
         .padding()
+    }
+    
+    func fetchNews() async {
+        do {
+            let articles = try await NetworkManager.shared.getNews()
+            news = articles.articles
+        } catch {
+            if let error = error as? NetworkError {
+                print(error)
+            }
+        }
     }
 }
 
