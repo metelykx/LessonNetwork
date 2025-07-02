@@ -12,6 +12,7 @@ final class NetworkManager {
     //MARK: - Propeties
     static let shared = NetworkManager()
     
+    let urlNews = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=56f20e2c6d354ee58b9bfc763887716a"
     //MARK: - Initializer
     private init() {}
     
