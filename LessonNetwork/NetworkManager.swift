@@ -20,6 +20,8 @@ final class NetworkManager {
     func getNews() async throws -> News{
         
         guard let url = URL(string: urlNews) else { throw NetworkError.ivalidURL}
+        let (data, response) = try await URLSession.shared.data(from: url)
+        
     }
 }
 
