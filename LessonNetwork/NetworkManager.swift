@@ -21,11 +21,18 @@ final class NetworkManager {
         
         guard let url = URL(string: urlNews) else { throw NetworkError.ivalidURL}
         let (data, response) = try await URLSession.shared.data(from: url)
-        
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else { throw NetworkError.invalidResponse}
+        do {
+            return try JSONDecoder().decode(News.self, from: data)
+        } catch {
+            throw NetworkError.invalidData
+        }
     }
 }
 
 
 enum NetworkError: String, Error {
     case ivalidURL = "Invalid URL"
+    case invalidResponse = "Invalid Response"
+    case invalidData = "Invalid Data"
 }
