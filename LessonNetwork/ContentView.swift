@@ -18,7 +18,11 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
             Text("Hello, world!")
         }
-        .padding()
+        .onAppear {
+            Task {
+                await fetchNews()
+            }
+        }
     }
     
     func fetchNews() async {
