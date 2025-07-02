@@ -15,11 +15,8 @@ struct ContentView: View {
     
     //MARK: - Body
     var body: some View {
-        VStack {
-           
-            ForEach(vm.topNews, id: \.url) { article in
-                Text(article.title)
-            }
+        NavigationView {
+            
         }
         
     }
