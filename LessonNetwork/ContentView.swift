@@ -38,13 +38,24 @@ struct ContentView: View {
                                     Rectangle()
                                         .frame(height: 150)
                                         .foregroundStyle(.secondary)
+                                        .opacity(0.3)
+                                        .cornerRadius(10)
+                                    
+                                    Image(systemName: "photo")
+                                        .resizable()
+                                        .foregroundStyle(.secondary)
+                                        .scaledToFit()
+                                        .frame(height: 50)
                                 }
+                                
                             }
                             .frame(width: 260, height: 260)
+                            .padding(10)
                             .background(.white)
                             .cornerRadius(10)
                         }
                     }
+                    .padding(.horizontal)
                 }
             }
             .background(.secondary.opacity(0.2))
