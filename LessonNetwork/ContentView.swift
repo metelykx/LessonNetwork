@@ -16,7 +16,10 @@ struct ContentView: View {
     //MARK: - Body
     var body: some View {
         NavigationView {
-            
+            //showIndicators - delete my favourite stick :)
+            ScrollView(.vertical, showsIndicators: false) {
+                
+            }
         }
         
     }
