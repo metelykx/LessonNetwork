@@ -32,11 +32,24 @@ struct ContentView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        
+                        ForEach(vm.topNews, id: \.url) { article in
+                            VStack {
+                                ZStack {
+                                    Rectangle()
+                                        .frame(height: 150)
+                                        .foregroundStyle(.secondary)
+                                }
+                            }
+                            .frame(width: 260, height: 260)
+                            .background(.white)
+                            .cornerRadius(10)
+                        }
                     }
                 }
             }
+            .background(.secondary.opacity(0.2))
         }
+        
         
     }
     
