@@ -16,4 +16,7 @@ final class NetworkManager {
     private init() {}
     
     //MARK: - Methods
+    func getNews() {
+        
+    }
 }
