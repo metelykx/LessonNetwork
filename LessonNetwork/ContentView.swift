@@ -33,32 +33,7 @@ struct ContentView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(vm.topNews, id: \.url) { article in
-                            VStack {
-                                ZStack {
-                                    Rectangle()
-                                        .frame(height: 150)
-                                        .foregroundStyle(.secondary)
-                                        .opacity(0.3)
-                                        .cornerRadius(10)
-                                    
-                                    Image(systemName: "photo")
-                                        .resizable()
-                                        .foregroundStyle(.secondary)
-                                        .scaledToFit()
-                                        .frame(height: 50)
-                                }
-                                VStack(alignment: .leading) {
-                                    Text(article.title).titleFont()
-                                    Spacer()
-                                    
-                                    Text(article.publishedAt.convertData()).descriptionFont()
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                            }
-                            .frame(width: 260, height: 260)
-                            .padding(10)
-                            .background(.white)
-                            .cornerRadius(10)
+                            TopArticleView(article: article)
                         }
                     }
                     .padding(.horizontal)
@@ -77,6 +52,7 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
 
 
 
