@@ -19,6 +19,10 @@ struct ContentView: View {
             //showIndicators - delete my favourite stick :)
             ScrollView(.vertical, showsIndicators: false) {
                 
+                Text("Top News")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
         }
         
