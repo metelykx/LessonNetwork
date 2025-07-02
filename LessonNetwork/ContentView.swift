@@ -48,10 +48,10 @@ struct ContentView: View {
                                         .frame(height: 50)
                                 }
                                 VStack(alignment: .leading) {
-                                    Text(article.title)
+                                    Text(article.title).titleFont()
                                     Spacer()
                                     
-                                    Text(article.publishedAt.convertData())
+                                    Text(article.publishedAt.convertData()).descriptionFont()
                                 }
                                 .frame(maxWidth: .infinity, alignment: .leading)
                             }
