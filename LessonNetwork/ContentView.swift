@@ -9,14 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     
+    //MARK: - Proporties
     @State var news: [Article] = []
     
+    
+    //MARK: - Body
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+           
+            ForEach(news, id: \.url) { article in
+                Text(article.title)
+            }
         }
         .onAppear {
             Task {
@@ -25,6 +28,7 @@ struct ContentView: View {
         }
     }
     
+    //MARK: - Methods
     func fetchNews() async {
         do {
             let articles = try await NetworkManager.shared.getNews()
