@@ -19,5 +19,11 @@ final class NetworkManager {
     //MARK: - Methods
     func getNews() async throws -> News{
         
+        guard let url = URL(string: urlNews) else { throw NetworkError.ivalidURL}
     }
+}
+
+
+enum NetworkError: String, Error {
+    case ivalidURL = "Invalid URL"
 }
