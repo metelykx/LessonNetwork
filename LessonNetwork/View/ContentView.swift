@@ -37,7 +37,7 @@ struct ContentView: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(vm.topNews, id: \.url) { article in
+                        ForEach(vm.bottomnews, id: \.url) { article in
                             VStack {
                                 if let url = article.urlToImage, let imageURL = URL(string: url) {
                                     AsyncImage(url: imageURL) { phase in
