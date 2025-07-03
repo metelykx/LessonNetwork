@@ -38,14 +38,44 @@ struct ContentView: View {
                     }
                     .padding(.horizontal)
                 }
+                
+                //MARK: - Bottom News
+                Text("Bottom News")
+                    .font(.title)
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading)
+                    .padding(.top)
+                
+                
+                
+                
+                
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack {
+                        ForEach(vm.topNews, id: \.url) { article in
+                            VStack {
+                                ZStack {
+                                    Rectangle()
+                                        .frame(width: 120, height: 120)
+                                        .foregroundStyle(.secondary)
+                                        .opacity(0.3)
+                                        .cornerRadius(10)
+                                }
+                            }.frame(width:120, height: 240)
+                                .padding(10)
+                                .background(.background)
+                                .cornerRadius(10)
+                        }
+                    }
+                    .padding(.horizontal)
+                }
             }
             .background(.secondary.opacity(0.2))
         }
         
         
     }
-    
-    //MARK: - Methods
    
 }
 
