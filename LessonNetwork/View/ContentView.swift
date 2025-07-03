@@ -61,6 +61,22 @@ struct ContentView: View {
                                         .foregroundStyle(.secondary)
                                         .opacity(0.3)
                                         .cornerRadius(10)
+                                    
+                                    Image(systemName: "photo")
+                                        .resizable()
+                                        .foregroundStyle(.secondary)
+                                        .scaledToFit()
+                                        .frame(height: 50)
+                                }
+                                
+                                VStack(alignment: .leading) {
+                                    Text(article.title)
+                                        .titleFont()
+                                    
+                                    Spacer()
+                                    
+                                    Text(article.publishedAt.convertData())
+                                        .descriptionFont
                                 }
                             }.frame(width:120, height: 240)
                                 .padding(10)
