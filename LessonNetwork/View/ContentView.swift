@@ -1,12 +1,4 @@
-//
-//  ContentView.swift
-//  LessonNetwork
-//
-//  Created by Denis Ivaschenko on 02.07.2025.
-//
-
 import SwiftUI
-
 struct ContentView: View {
     
     //MARK: - Proporties
@@ -26,10 +18,6 @@ struct ContentView: View {
                     .padding(.leading)
                     .padding(.top)
                 
-                
-                
-                
-                
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(vm.topNews, id: \.url) { article in
@@ -47,26 +35,34 @@ struct ContentView: View {
                     .padding(.leading)
                     .padding(.top)
                 
-                
-                
-                
-                
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
                         ForEach(vm.topNews, id: \.url) { article in
                             VStack {
-                                ZStack {
-                                    Rectangle()
-                                        .frame(width: 120, height: 120)
-                                        .foregroundStyle(.secondary)
-                                        .opacity(0.3)
-                                        .cornerRadius(10)
-                                    
-                                    Image(systemName: "photo")
-                                        .resizable()
-                                        .foregroundStyle(.secondary)
-                                        .scaledToFit()
-                                        .frame(height: 50)
+                                if let url = article.urlToImage, let imageURL = URL(string: url) {
+                                    AsyncImage(url: imageURL) { phase in
+                                        if let image = phase.image {
+                                            image
+                                                .resizable()
+                                                .scaledToFit()  // Fixed typo here
+                                                .frame(width:120,height: 120)
+                                                .cornerRadius(10)
+                                        } else {
+                                            ZStack {
+                                                Rectangle()
+                                                    .frame(width: 120, height: 120)
+                                                    .foregroundStyle(.secondary)
+                                                    .opacity(0.3)
+                                                    .cornerRadius(10)
+                                                
+                                                Image(systemName: "photo")
+                                                    .resizable()
+                                                    .foregroundStyle(.secondary)
+                                                    .scaledToFit()  // Fixed typo here
+                                                    .frame(height: 50)
+                                            }
+                                        }
+                                    }
                                 }
                                 
                                 VStack(alignment: .leading) {
@@ -76,12 +72,14 @@ struct ContentView: View {
                                     Spacer()
                                     
                                     Text(article.publishedAt.convertData())
-                                        .descriptionFont
+                                        .descriptionFont()  // Added parentheses here
                                 }
-                            }.frame(width:120, height: 240)
-                                .padding(10)
-                                .background(.background)
-                                .cornerRadius(10)
+                                
+                            }
+                            .frame(width:120, height: 240)
+                            .padding(10)
+                            .background(.background)
+                            .cornerRadius(10)
                         }
                     }
                     .padding(.horizontal)
@@ -89,16 +87,9 @@ struct ContentView: View {
             }
             .background(.secondary.opacity(0.2))
         }
-        
-        
     }
-   
 }
 
 #Preview {
     ContentView()
 }
-
-
-
-
