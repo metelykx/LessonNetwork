@@ -22,7 +22,7 @@ final class ViewModel: ObservableObject {
     func fetchNews() {
         Task {
             do {
-                let articles = try await NetworkManager.shared.getNews()
+                let articles = try await NetworkManager.shared.getNews(urlString: URLConstans.TopurlNews)
                 topNews = articles.articles
             } catch {
                 if let error = error as? NetworkError {
