@@ -46,7 +46,7 @@ struct ContentView: View {
                         ForEach(vm.bottomnews, id: \.url) { article in
                             NavigationLink(destination: EmptyView()) {
                                 BottomArticleNewsView(article: article)
-                            }
+                            }.buttonStyle(.plain)
                         }
                     }
                     .padding(.horizontal)
