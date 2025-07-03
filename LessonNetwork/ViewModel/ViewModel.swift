@@ -14,12 +14,12 @@ final class ViewModel: ObservableObject {
     @Published var topNews: [Article] = []
     
     init() {
-        fetchNews()
+        fetchTopNews()
     }
     
     //MARK: - Methods
     
-    func fetchNews() {
+    func fetchTopNews() {
         Task {
             do {
                 let articles = try await NetworkManager.shared.getNews(urlString: URLConstans.TopurlNews)
