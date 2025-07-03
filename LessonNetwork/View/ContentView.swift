@@ -23,7 +23,7 @@ struct ContentView: View {
                         ForEach(vm.topNews, id: \.url) { article in
                             
                             
-                            NavigationLink(destination: EmptyView()) {
+                            NavigationLink(destination: DetailView(article: article)) {
                                 TopArticleView(article: article)
                             }.buttonStyle(.plain)
                         }

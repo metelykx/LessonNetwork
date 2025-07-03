@@ -14,17 +14,7 @@ struct DetailView: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            GeometryReader { reader in
-                if let url = article.urlToImage, let imageURL = URL(string: url) {
-                    AsyncImage(url: imageURL) { phase in
-                        phase.image!
-                            .resizable()
-                            .offset(y: -reader.frame(in: .global).minY)
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: SizeConstant.screenWidth, height: reader.frame(in: .global).minY + SizeConstant.avatarHeight + 10)
-                    }
-                }
-            }.frame(height: UIScreen.main.bounds.width)
+            MainImageView(article: article)
         }
     }
 }
@@ -41,13 +31,24 @@ struct DetailView: View {
     )
 }
 
-struct SizeConstant {
-    static var avatarHeight: CGFloat {
-        UIScreen.main.bounds.height / 2
-    }
+
+
+
+struct MainImageView: View {
+     
+    let article: Article
     
-    static var screenWidth: CGFloat {
-        UIScreen.main.bounds.width
+    var body: some View {
+        GeometryReader { reader in
+            if let url = article.urlToImage, let imageURL = URL(string: url) {
+                AsyncImage(url: imageURL) { phase in
+                    phase.image!
+                        .resizable()
+                        .offset(y: -reader.frame(in: .global).minY)
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: SizeConstant.screenWidth, height: reader.frame(in: .global).minY + SizeConstant.avatarHeight + 10)
+                }
+            }
+        }.frame(height: UIScreen.main.bounds.width)
     }
 }
-
