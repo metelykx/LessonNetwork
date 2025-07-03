@@ -21,7 +21,11 @@ struct ContentView: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
                         ForEach(vm.topNews, id: \.url) { article in
-                            TopArticleView(article: article)
+                            
+                            
+                            NavigationLink(destination: EmptyView()) {
+                                TopArticleView(article: article)
+                            }.buttonStyle(.plain)
                         }
                     }
                     .padding(.horizontal)
