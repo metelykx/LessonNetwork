@@ -45,6 +45,11 @@ struct ContentView: View {
                 }.shadow(color: .black.opacity(0.2), radius: 8, x: 5, y: 8)
             }
             .background(.secondary.opacity(0.2))
+            .refreshable {
+                vm.fetchTopNews()
+                vm.fetchBottomNews()
+                
+            }
         }
     }
 }
